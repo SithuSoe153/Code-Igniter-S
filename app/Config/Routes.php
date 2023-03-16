@@ -19,7 +19,19 @@ $routes->set404Override();
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).
 // Set `$autoRoutesImproved` to true in `app/Config/Feature.php` and set the following to true.
-// $routes->setAutoRoute(false);
+$routes->setAutoRoute(true);
+
+
+
+$routes->group('admin', function ($routes) {
+
+    // Blog routes
+    $routes->add('blog', 'Admin\Blog::index');
+    $routes->get('blog/new', 'Admin\Blog::createNew');
+    $routes->post('blog/new', 'Admin\Blog::saveBlog');
+});
+
+
 
 /*
  * --------------------------------------------------------------------
